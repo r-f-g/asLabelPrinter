@@ -165,6 +165,7 @@ class scan:
 	def __addORedit(self):
 		print('\n---add or edit---\n')
 		EAN = self.__inputINT('EAN')
+		if EAN == 0: return
 		edit = self.__existsEAN(EAN)
 		if edit == -1: return 
 		label = self.__selection(self.labelsName, '\n'.join(['{0}-{1}'.format(l,self.labelsName[l]) for l in self.labelsName]))
