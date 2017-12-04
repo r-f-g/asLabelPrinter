@@ -140,7 +140,7 @@ class scan:
 				return -1
 
 	def __send(self, id):
-		print('--send--\nconecting...')
+		print('\t--send--\nconecting...')
 		client = requests.session()
 		client.get(self.settings['login_link'])
 		login_data = {'username':self.settings['update_login'],'password':self.settings['update_pass'], 'csrfmiddlewaretoken':client.cookies['csrftoken']}
@@ -148,7 +148,7 @@ class scan:
 		if r1.text.find('Zadali ste zle meno alebo heslo. Prosím skúste to znova.') >= 0:
 			print('\nERR401 - problem with login to online service\n')
 			return
-		print('successful login')
+		print('\tsuccessful login')
 		try:
 			select, header = self.__read('SELECT * FROM data WHERE id={0};'.format(id), True)
 			data = {h:select[0][header[h]] for h in header}
@@ -156,10 +156,10 @@ class scan:
 			print('\nERR402 - problem with get data\n')
 		try:
 			r2=client.post(self.settings['update_link']+'add', data={'csrfmiddlewaretoken':client.cookies['csrftoken'], 'data':json.dumps(data)})
-			print(r2.json()['message'])
+			print('\t'+r2.json()['message'])
 		except:
 			print('\nERR403 - problem with send data to online service\n')
-		print('--done--')
+		print('\t--done--')
 		client.close()
 
 	def __addORedit(self):
@@ -247,6 +247,8 @@ class scan:
 		except:
 			print('\nERR303 - problem with write data from online service\n')
 			return
+		print('all data was written to database')
+		print('--done--')
 
 	def __language(self):
 		self.language += 1
