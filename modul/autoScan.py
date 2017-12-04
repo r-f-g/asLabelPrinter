@@ -140,7 +140,7 @@ class scan:
 				return -1
 
 	def __send(self, id):
-		print('\t--send--\nconecting...')
+		print('\t--send--\n\tconecting...')
 		client = requests.session()
 		client.get(self.settings['login_link'])
 		login_data = {'username':self.settings['update_login'],'password':self.settings['update_pass'], 'csrfmiddlewaretoken':client.cookies['csrftoken']}

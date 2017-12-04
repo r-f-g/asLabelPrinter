@@ -45,7 +45,7 @@ class database:
 					`id`		integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 					`EAN`		integer NOT NULL,
 					`label`		varchar ( 50 ),
-					`code`		integer ( 50 ),
+					`code`		varchar ( 50 ),
 					`ecode`		varchar ( 50 )
 				);
 				'''
@@ -114,7 +114,7 @@ class database:
 				add.append((cname, ctype, "'{0}'".format(cselection)))
 			else:
 				add.append((cname, ctype, 'NULL'))
-			exit = input('Do you want add another? (y/n)')
+			exit = input('Do you want add another? (y/n)\n')
 			if exit != 'y': break
 		if len(add) > 0:
 			for col in add:
