@@ -193,6 +193,8 @@ class database:
 		add.append(addP.format('key_update',key_update))
 		key_quantity = input('- key for insert quantity:\t')
 		add.append(addP.format('key_quantity',key_quantity))
+		key_calibration = input('- key for run calibration:\t')
+		add.append(addP.format('key_calibration',key_calibration))
 		key_language = input('- key for change language:\t')
 		add.append(addP.format('key_language',key_language))
 		languages = input('- array of languages:\t\t')

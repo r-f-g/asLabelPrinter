@@ -55,6 +55,8 @@ class scan:
 			if self.settings['update_login'] != None: self.__update()
 		elif inp == self.settings['key_language']:
 			self.__language()
+		elif inp == self.settings['key_calibration']:
+			self.__eprint('~JC',1)
 		else:
 			quantity, ean = self.__quantity(inp)
 			if ean == 0: return False
